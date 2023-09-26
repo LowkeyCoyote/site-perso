@@ -1,6 +1,6 @@
 .headerContainer{
     display: flex;
-    height: 75vh;
+    height: 65vh;
     justify-content: center;
     align-items: center;
     background: url(../../assets/images/bg-home.png) no-repeat ;
@@ -56,7 +56,7 @@
 @media screen and (max-width : 769px){
     .headerContainer{
         flex-direction: column;
-        height: 60vh;
+        height: 70vh;
     }
 
     .headerColumn{
@@ -64,15 +64,24 @@
         max-width: 340px;
         text-align: center;
         margin-bottom: 2rem;
+  
     }
 
     .headerColumn h1{
         font-size: 28px;
-        margin-top: 3rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
     }
 
     .headerColumn p{
-        line-height: 2rem;
+        line-height: 1.8rem;
+        font-size: 18px;
+    }
+
+    .headerImg > img{
+        border-radius: 5px;
+        max-width: 250px;
+        height: auto;
     }
 }
 
@@ -83,31 +92,32 @@
     }
     .headerColumn h1{
         font-size: 28px;
-        margin-bottom: 1.5rem;
+
     }
 }
 
 .fadeInElementTop {
     opacity: 0;
     transition: all 1s ease-in-out;
-    transform: translateY(-60px); /* Déplace l'élément de 20px vers le bas */
+    transform: translateY(-60px); 
   }
   
   .fadeInElementTop.active {
     opacity: 1;
-    transform: translateY(0); /* Réinitialise la position */
+    transform: translateY(0);
+ 
   }
 
   .fadeInElementRight{
     opacity: 0;
     transition: all 1s ease-in-out;
-    transform: translateX(60px); /* Déplace l'élément de 20px vers le bas */
-    transition-delay: 0.1ms;
+    transform: translateX(60px); 
   }
 
   .fadeInElementRight.active {
     opacity: 1;
-    transform: translateX(0); /* Réinitialise la position */
+    transform: translateX(0); 
+    transition-delay: 0.2s;
   }
 
 

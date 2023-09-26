@@ -1,0 +1,17 @@
+.invalidText{
+    color: red;
+    text-align: left;
+    margin-left: 0.8rem;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+.validText{
+    opacity: 0;
+    pointer-events: none;
+    text-align: left;
+    margin-left: 0.8rem;
+    font-size: 14px;
+    color: red;
+    transition: all 0.1s ease-in-out;
+}

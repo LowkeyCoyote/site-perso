@@ -4,11 +4,15 @@ import Header from "../components/Header/Header";
 import FirstSection from "../components/FirstSection/FirstSection";
 import SecondSection from "../components/SecondSection/SecondSection";
 import Contact from "../components/Contact/Contact";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function Home(){
 
     return(
         <>
+
+
+            <Navbar />
             <Header
             headerTitle="Bonjour ! Je suis Joska"
             headerContent="Développeur passioné prêt à donner vie à vos idées. 

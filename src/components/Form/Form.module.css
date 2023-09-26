@@ -1,44 +1,29 @@
-.inputContainer{
+.inputContainer, .inputContainerInvalid{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 1rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+
 }
 
-.inputContainer > input{
+.inputContainer > input, .inputContainerInvalid > input {
     padding: 0.8rem;
     border-radius: 5px;
     border: 1px solid rgba(128, 128, 128, 0.353);
     font-size: 20px;
 }
 
-.inputContainer img{
-    height: 30px;
-    cursor: pointer;
-    color: red;
+.inputContainerInvalid > input{
+    border: 1px solid red;
+    transition: all ease-in-out 0.1s;
 }
 
 .inputContainer > input:focus{
     border: 1px solid rgb(47, 84, 240);
+    transition: all ease-in-out 0.3s;
     outline: none;
-}
-
-.inputContainerInvalid > input:focus{
-    border: 1px solid red;
-}
-
-.inputContainerInvalid{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
-
-.inputContainerInvalid > input{
-    border: 1px solid red;
-    padding: 0.8rem;
-    border-radius: 5px;
-    font-size: 20px;
 }
 
 .inputContainerInvalid > input:focus{
@@ -46,8 +31,17 @@
     outline: none;
 }
 
+.inputContainer img, .inputContainerInvalid img{
+    height: 30px;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+.inputContainerInvalid img{
+    cursor: initial;
+}
 
-.inputContainer > textarea{
+
+.inputContainer > textarea, .inputContainerInvalid > textarea{
     padding: 0.8rem;
     border-radius: 5px;
     border: 1px solid rgba(128, 128, 128, 0.353);
@@ -58,16 +52,13 @@
     color: rgb(135,135, 135);
 }
 
+.inputContainerInvalid > textarea{
+    border: 1px solid red;
+}
+
 .inputContainer > textarea:focus{
     outline: none;
     border: 1px solid rgb(47, 84, 240);
-}
-
-.inputContainerInvalid > textarea{
-    border: 1px solid red;
-    padding: 0.8rem;
-    border-radius: 5px;
-    font-size: 20px;
 }
 
 .inputContainerInvalid > textarea:focus{

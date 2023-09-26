@@ -1,16 +1,18 @@
 .ContactContainer{
-    margin: 3rem auto 10rem auto;
+    margin: 0 auto 3rem auto;
     text-align: center;
+    height: 66vh;
+    padding-bottom: 3rem;
 }
 
 
 .ContactContainer > h2{
     text-align: center;
-    margin-bottom: 3rem;
-    border-bottom: 1px rgb(128, 128, 128) solid;
+    padding-bottom: 3rem;
+    border-bottom: 2px rgba(66, 69, 76, 0.3)
+    solid;
     display: inline-block;
     padding-bottom: 1rem;
-
     margin: 0 auto 3rem auto;
 }
 
@@ -19,6 +21,7 @@
     align-items: center;
     justify-content: center;
     gap: 10rem;
+    margin-top: 1rem;
 }
 
 .contactImg{
@@ -50,12 +53,20 @@
     margin-bottom: 1rem;
 }
 
+.contactColumn h4{
+    display: inline-block;
+    margin:1rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(66, 69, 76, 0.3);
+    
+}
+
 .localisation{
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .localisation > img{
@@ -67,7 +78,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .mail > img{
@@ -79,7 +90,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
 }
 
 .link > img{

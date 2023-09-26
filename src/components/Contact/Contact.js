@@ -40,9 +40,10 @@ export default function Contact() {
                         <img src={linkedinIcon} alt="" />
                         <a href="https://www.linkedin.com/in/joska-gyuricza-developpeur-web/">Linkedin</a>
                     </div>
-
+                    <h4>Restons en contact</h4>
+                    <p>N'hésitez pas à utiliser le formulaire. <br /> Renseignez votre nom et passez à l'étape suivante</p>
+                  
                     <Form />
-      
                 </div>
 
             </div>

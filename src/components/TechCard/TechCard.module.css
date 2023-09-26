@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     width: 1100px;
+    margin-bottom: 3rem;
 }
 
 .techContent{
@@ -25,7 +26,7 @@
     width: 50%;
     height: 350px;
     background: rgb(47,84,235);
-    background: linear-gradient(60deg, rgba(47,84,235,0.8883928571428571) 0%, rgba(0,2,66,0.8827906162464986) 90%);
+    background: linear-gradient(60deg, rgba(78, 104, 209, 0.888) 0%, rgba(23, 25, 98, 0.883) 90%);
     padding: 1.5rem;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;

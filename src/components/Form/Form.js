@@ -2,6 +2,12 @@ import React from 'react'
 import { useState } from 'react';
 import styles from './Form.module.css'
 
+import NameInput from '../Inputs/NameInput/NameInput';
+import EmailInput from '../Inputs/EmailInput/EmailInput';
+import CompanyInput from '../Inputs/CompanyInput/CompanyInput';
+import MessageInput from '../Inputs/MessageInput/MessageInput';
+
+import errorIcon from '../../assets/icons/icons8-cross-mark-emoji-32.png'
 import arrowIcon from '../../assets/icons/icons8-arrow-24.png'
 
 export default function Form() {
@@ -34,6 +40,10 @@ export default function Form() {
 
     const enteredEmailIsValid = regexEmail.test(enteredEmail)
     const inputEmailIsInvalid = !enteredEmailIsValid && enteredEmailTouched
+
+    const enteredMessageIsValid = enteredMessage.length > 5
+    const inputMessageIsInvalid = !enteredMessageIsValid && enteredMessageTouched
+
     
 
     const nameInputChangeHandler = (event) => {
@@ -60,7 +70,7 @@ export default function Form() {
         setEnteredEmailTouched(true)
     }
 
-    const massageInputChangeHandler = (event) => {
+    const messageInputChangeHandler = (event) => {
         setEnteredMessage(event.target.value)
     }
 
@@ -68,31 +78,11 @@ export default function Form() {
         setEnteredMessageTouched(true)
     }
 
-
-
-    const enteredContentChangeHandler = (element) => {
+    const enteredContentChangeHandler = (element, propertyName) => {
         console.log(element)
-        if(steps === 1){
             setEnteredContent(enteredContent => ({
-                ...enteredContent, name : element
+                ...enteredContent, [propertyName] : element
             }))
-        }
-        if(steps === 2){
-            setEnteredContent(enteredContent => ({
-                ...enteredContent, company : element
-            }))
-        }
-        if(steps === 3){
-            setEnteredContent(enteredContent => ({
-                ...enteredContent, email : element
-            }))
-        }
-
-        if(steps === 4){
-            setEnteredContent(enteredContent => ({
-                ...enteredContent, message : element
-            }))
-        }
     }
 
     const handleChangeSteps = (event) => {
@@ -103,10 +93,10 @@ export default function Form() {
             return;
         }
 
-        if(enteredNameIsValid && steps === 1){enteredContentChangeHandler(enteredName)}
-        if(enteredEmailIsValid && steps === 2){enteredContentChangeHandler(enteredEmail)}
-        if(enteredCompanyIsValid && steps === 3){enteredContentChangeHandler(enteredCompany)}
-        if(enteredMessageTouched && steps === 4){enteredContentChangeHandler(enteredMessage)}
+        if(enteredNameIsValid && steps === 1){enteredContentChangeHandler(enteredName, 'name')}
+        if(enteredEmailIsValid && steps === 2){enteredContentChangeHandler(enteredEmail, 'email')}
+        if(enteredCompanyIsValid && steps === 3){enteredContentChangeHandler(enteredCompany, 'company')}
+        if(enteredMessageTouched && steps === 4){enteredContentChangeHandler(enteredMessage, 'message')}
 
         setSteps(steps + 1)
         console.log(enteredContent)
@@ -115,68 +105,56 @@ export default function Form() {
     const nameInputClasses = steps === 1 && inputNameIsInvalid ? styles.inputContainerInvalid : styles.inputContainer
     const emailInputClasses = steps === 2 && inputEmailIsInvalid ? styles.inputContainerInvalid : styles.inputContainer
     const companyNameClasses = steps === 3 && inputCompanyIsInvalid ? styles.inputContainerInvalid : styles.inputContainer
-    const messageNameClasses = steps === 4 && enteredMessageTouched ? styles.inputContainerInvalid : styles.inputContainer
+    const messageNameClasses = steps === 4 && inputMessageIsInvalid ? styles.inputContainerInvalid : styles.inputContainer
 
 
   return (
     <>
         {steps === 1 && 
-        <div className={nameInputClasses}>
-            <input 
-            type="text" 
-            placeholder='Votre nom'
-            onBlur={nameInputBlurHandler}
-            onChange={nameInputChangeHandler}
-            />
-            <div className={styles.arrow}>
-                <img src={arrowIcon} alt="" onClick={handleChangeSteps} />
-            </div>
-        </div>
-        }
+        <NameInput
+        inputClasses={nameInputClasses}
+        onBlur={nameInputBlurHandler}
+        onChange={nameInputChangeHandler}
+        arrowClasses={styles.arrow}
+        arrowIcon={inputNameIsInvalid ? errorIcon : arrowIcon}
+        onArrowClick={handleChangeSteps}
+        validInput={inputNameIsInvalid}
+        />}
+
         {steps === 2 && 
-           <div className={emailInputClasses}>
-           <input 
-           type="email" 
-           placeholder='Votre email'
+        <EmailInput
+        inputClasses={emailInputClasses}
+        onBlur={emailInputBlurHandler}
+        onChange={emailInputChangeHandler}
+        arrowClasses={styles.arrow}
+        arrowIcon={inputEmailIsInvalid ? errorIcon : arrowIcon}
+        onArrowClick={handleChangeSteps}
+        validInput={inputEmailIsInvalid}
+        />}
 
-           onBlur={emailInputBlurHandler}
-           onChange={emailInputChangeHandler}
-           />
-           <div className={styles.arrow}>
-               <img src={arrowIcon} alt="" onClick={handleChangeSteps} />
-           </div>
-       </div>
-        }
          {steps === 3 && 
-           <div className={companyNameClasses}>
-           <input 
-           type="text" 
-           placeholder='Votre entreprise'
-
-           onBlur={companyInputBlurHandler}
-           onChange={companyInputChangeHandler}
-           />
-           <div className={styles.arrow}>
-               <img src={arrowIcon} alt="" onClick={handleChangeSteps} />
-           </div>
-       </div>
-        }
+        <CompanyInput
+        inputClasses={companyNameClasses}
+        onBlur={companyInputBlurHandler}
+        onChange={companyInputChangeHandler}
+        arrowClasses={styles.arrow}
+        arrowIcon={inputCompanyIsInvalid ? errorIcon : arrowIcon}
+        onArrowClick={handleChangeSteps}
+        validInput={inputCompanyIsInvalid}
+        />}
 
         {steps === 4 && 
-                <div className={messageNameClasses}>
-                <textarea 
-                type="textarea" 
-                defaultValue='Votre message'
-                maxLength={400}
-                onBlur={messageInputBlurHandler}
-                onChange={massageInputChangeHandler}
-                />
-                <div className={styles.arrow}>
-                    <img src={arrowIcon} alt="" onClick={handleChangeSteps} />
-                </div>
-            </div>
-                }
+       <MessageInput
+       inputClasses={messageNameClasses}
+       onBlur={messageInputBlurHandler}
+       onChange={messageInputChangeHandler}
+       arrowClasses={styles.arrow}
+       arrowIcon={inputMessageIsInvalid ? errorIcon : arrowIcon}
+       onArrowClick={handleChangeSteps}
+       validInput={inputMessageIsInvalid}
+       />}
                 {steps === 5 && <p>Merci !</p>}
     </>
   )
 }
+

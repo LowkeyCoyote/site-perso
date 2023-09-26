@@ -19,13 +19,13 @@
 
 }
 
-.iconContainer:hover{
+.visible{
     font-size: 18px;
     overflow: visible;
     transition: all ease-in-out 0.4s;
 }
 
-.iconContainer:hover > p{
+.visible > p{
     padding: 0 20px 0 8px;
     font-family: 'Lato', sans-serif;
 }

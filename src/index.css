@@ -40,3 +40,14 @@ h3{
   color: var(--very-dark-bluish-gray);
 }
 
+h4{
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--very-dark-bluish-gray);
+}
+
+.background-contact{
+  background: url(./assets/images/bg-home.png) no-repeat ;
+  background-size: contain;
+}
+
