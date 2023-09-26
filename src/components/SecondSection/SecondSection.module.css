@@ -1,0 +1,53 @@
+.secondSectionContainer{
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+    background-color: #f5f5f7;
+
+}
+
+.secondSectionContent{
+
+    margin: 3rem auto 4rem auto;
+}
+
+.secondSectionContainer h2{
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.secondSectionCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+}
+
+.techContent{
+    width: 50%;
+    background-color: white;
+    padding: 2rem;
+    height: 350px;
+}
+
+.techContent p{
+    font-size: 18px;
+    line-height: 1.8rem;
+}
+
+.techIcon{
+    width: 50%;
+    height: 350px;
+    background: rgb(47,84,235);
+    background: linear-gradient(60deg, rgba(47,84,235,0.8883928571428571) 0%, rgba(0,2,66,0.8827906162464986) 90%);
+    padding: 2rem;
+}
+
+@media screen and (max-width: 769px){
+    .secondSectionContainer h2{
+        font-size: 29px;
+    }
+}
+
+

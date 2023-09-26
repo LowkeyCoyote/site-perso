@@ -1,0 +1,38 @@
+.techIcon{
+    width: 50%;
+    height: 350px;
+    background: rgb(47,84,235);
+    background: linear-gradient(60deg, rgba(47,84,235,0.8883928571428571) 0%, rgba(0,2,66,0.8827906162464986) 90%);
+    padding: 2rem;
+}
+
+.iconContainer{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    font-size: 0;
+    cursor: pointer;
+
+}
+
+.iconContainer:hover{
+    font-size: 18px;
+    overflow: visible;
+    transition: all ease-in-out 0.4s;
+}
+
+.iconContainer:hover > p{
+    padding: 0 20px 0 8px;
+    font-family: 'Lato', sans-serif;
+}
+
+@media screen and (max-width: 769px){
+    .iconContainer > img{
+        width: 60px;
+    }
+}
+

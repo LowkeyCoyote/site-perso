@@ -1,0 +1,82 @@
+
+.secondSectionCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 1100px;
+}
+
+.techContent{
+    width: 50%;
+    background-color: white;
+    padding: 2rem;
+    height: 350px;
+    display: flex;
+    align-items: center;
+}
+
+.techContent p{
+    font-size: 18px;
+    line-height: 1.8rem;
+}
+
+.techIcon{
+    width: 50%;
+    height: 350px;
+    background: rgb(47,84,235);
+    background: linear-gradient(60deg, rgba(47,84,235,0.8883928571428571) 0%, rgba(0,2,66,0.8827906162464986) 90%);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 100%;
+    justify-content: start;
+    align-items: center;
+}
+
+.iconContainer{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 9999px;
+    transition: all ease-in-out 0.3s;
+    font-size: 0;
+    cursor: pointer;
+}
+
+.iconContainerVisible{
+    font-size: 16px;
+    padding: 15px;
+    overflow: visible;
+    transition: all ease-in-out 0.3s;
+}
+
+@media screen and (max-width: 1200px){
+    .secondSectionCard{
+        width: 800px;
+    }
+    .techIcon{
+        height: 450px;
+    }
+    .techContent{
+        height: 450px;
+    }
+}
+
+@media screen and (max-width: 769px){
+    .secondSectionCard{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .secondSectionCard{
+        width: 360px;
+        margin: 0 auto;
+    }
+
+    .techContent, .techIcon{
+        width: 100%;
+    }
+}
+

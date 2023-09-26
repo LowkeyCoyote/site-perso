@@ -1,0 +1,76 @@
+.inputContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.inputContainer > input{
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.353);
+    font-size: 20px;
+}
+
+.inputContainer img{
+    height: 30px;
+    cursor: pointer;
+    color: red;
+}
+
+.inputContainer > input:focus{
+    border: 1px solid rgb(47, 84, 240);
+    outline: none;
+}
+
+.inputContainerInvalid > input:focus{
+    border: 1px solid red;
+}
+
+.inputContainerInvalid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.inputContainerInvalid > input{
+    border: 1px solid red;
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.inputContainerInvalid > input:focus{
+    border: 1px solid red;
+    outline: none;
+}
+
+
+.inputContainer > textarea{
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.353);
+    font-size: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    color: rgb(135,135, 135);
+}
+
+.inputContainer > textarea:focus{
+    outline: none;
+    border: 1px solid rgb(47, 84, 240);
+}
+
+.inputContainerInvalid > textarea{
+    border: 1px solid red;
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.inputContainerInvalid > textarea:focus{
+    border: 1px solid red;
+    outline: none;
+}
