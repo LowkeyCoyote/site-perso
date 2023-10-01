@@ -46,8 +46,26 @@ h4{
   color: var(--very-dark-bluish-gray);
 }
 
+
+
 .background-contact{
   background: url(./assets/images/bg-home.png) no-repeat ;
   background-size: contain;
+  padding-top: 2rem;
+}
+
+.form-contact-page{
+  margin-top: 2rem;
+}
+
+
+@media screen and (max-width: 769px){
+  h1, h2{
+    font-size: 26px;
+  }
+
+  h3{
+    font-size: 20px;
+  }
 }
 

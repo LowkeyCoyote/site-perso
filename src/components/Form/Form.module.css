@@ -1,38 +1,42 @@
 .inputContainer, .inputContainerInvalid{
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1.9rem;
     margin-top: 1rem;
-    padding: 0.5rem;
-
+    margin-left: 1rem;
+    padding: 0.5rem 0.5rem 0.1rem 0.5rem;
 }
 
 .inputContainer > input, .inputContainerInvalid > input {
-    padding: 0.8rem;
-    border-radius: 5px;
-    border: 1px solid rgba(128, 128, 128, 0.353);
-    font-size: 20px;
+    padding: 0.6rem 1.5rem;
+    border-radius: 15px;
+    border: 0.5px solid rgba(128, 128, 128, 0.353);
+    font-size: 14px;
 }
 
 .inputContainerInvalid > input{
-    border: 1px solid red;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    background-color:  rgba(255, 0, 0, 0.1);
     transition: all ease-in-out 0.1s;
 }
 
 .inputContainer > input:focus{
-    border: 1px solid rgb(47, 84, 240);
+    border: 1px solid rgba(47, 84, 240, 0.5);
+    transition: all ease-in-out 0.3s;
+    outline: none;
+    background-color:rgba(47, 84, 240, 0.1) ;
+}
+
+.inputContainerInvalid > input:focus{
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    background-color:  rgba(255, 0, 0, 0.1);
     transition: all ease-in-out 0.3s;
     outline: none;
 }
 
-.inputContainerInvalid > input:focus{
-    border: 1px solid red;
-    outline: none;
-}
-
 .inputContainer img, .inputContainerInvalid img{
-    height: 30px;
+    height: 20px;
     cursor: pointer;
     transition: all ease-in-out 0.3s;
 }
@@ -42,26 +46,53 @@
 
 
 .inputContainer > textarea, .inputContainerInvalid > textarea{
-    padding: 0.8rem;
+    padding: 0.6rem;
     border-radius: 5px;
-    border: 1px solid rgba(128, 128, 128, 0.353);
-    font-size: 20px;
+    border: 0.5px solid rgba(128, 128, 128, 0.353);
+    font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    color: rgb(135,135, 135);
+    color: black;
+    width: 185px;
+    max-width: 400px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 .inputContainerInvalid > textarea{
-    border: 1px solid red;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    background-color:  rgba(255, 0, 0, 0.1);
 }
 
 .inputContainer > textarea:focus{
     outline: none;
-    border: 1px solid rgb(47, 84, 240);
+    border: 1px solid rgba(47, 84, 240, 0.5);
+    background-color:rgba(47, 84, 240, 0.1) ;
 }
 
 .inputContainerInvalid > textarea:focus{
-    border: 1px solid red;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    background-color:  rgba(255, 0, 0, 0.1);
     outline: none;
 }
+
+.arrow:hover{
+    transition: 0.1s ease-in-out all;
+    transform: scale(1.15);
+}
+
+.success{
+    background: linear-gradient(60deg, rgba(78, 104, 209, 0.888) 0%, rgba(23, 25, 98, 0.883) 90%);
+    padding: 0.7rem 2rem;
+    margin-top: 30px;
+    border-radius: 999px;
+    box-shadow: 0 8px 20px #b6cad8;
+}
+
+.successText{
+    font-size: 20px;
+    color: white;
+
+}
+

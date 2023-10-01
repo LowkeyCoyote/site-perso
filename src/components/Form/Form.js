@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import axios from 'axios'
+
 import { useState } from 'react';
 import styles from './Form.module.css'
 
@@ -11,6 +13,7 @@ import errorIcon from '../../assets/icons/icons8-cross-mark-emoji-32.png'
 import arrowIcon from '../../assets/icons/icons8-arrow-24.png'
 
 export default function Form() {
+
 
     const [steps, setSteps] = useState(1);
     const [enteredContent, setEnteredContent] = useState({})
@@ -27,10 +30,11 @@ export default function Form() {
     const [enteredMessage, setEnteredMessage] = useState('')
     const [enteredMessageTouched, setEnteredMessageTouched] = useState(false)
 
+    const emailInputRef = useRef();
+
     const regexNomPrenom = /^[a-zA-ZÀ-ÿ\s'-]+$/;
     const regexCompanyName = /^[A-Za-z-' ]+$/;
     const regexEmail = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
 
     const enteredNameIsValid = regexNomPrenom.test(enteredName)
     const inputNameIsInvalid = !enteredNameIsValid && enteredNameTouched;
@@ -44,7 +48,15 @@ export default function Form() {
     const enteredMessageIsValid = enteredMessage.length > 5
     const inputMessageIsInvalid = !enteredMessageIsValid && enteredMessageTouched
 
-    
+
+    useEffect(() => {
+        if(steps === 5 && Object.keys(enteredContent).length === 4){
+            axios.post('http://localhost:3001/api', enteredContent)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+            
+        }
+    },[enteredContent, steps])
 
     const nameInputChangeHandler = (event) => {
         setEnteredName(event.target.value);
@@ -79,27 +91,35 @@ export default function Form() {
     }
 
     const enteredContentChangeHandler = (element, propertyName) => {
-        console.log(element)
             setEnteredContent(enteredContent => ({
                 ...enteredContent, [propertyName] : element
             }))
+    }
+
+    const handleKeydown = (event) => {
+        if (event.key === 'Enter'){
+            event.preventDefault()
+            handleChangeSteps(event)
+        }
     }
 
     const handleChangeSteps = (event) => {
         event.preventDefault();
         setEnteredNameTouched(true);
 
-        if((!enteredNameIsValid && steps === 1) || (!enteredEmailIsValid && steps === 2) || (!enteredCompanyIsValid && steps === 3) ||(!enteredMessageTouched && steps === 4)){
+        if((!enteredNameIsValid && steps === 1) 
+        || (!enteredEmailIsValid && steps === 2) 
+        || (!enteredCompanyIsValid && steps === 3) 
+        ||(!enteredMessageIsValid && steps === 4)){
             return;
         }
 
-        if(enteredNameIsValid && steps === 1){enteredContentChangeHandler(enteredName, 'name')}
+        if(enteredNameIsValid && steps === 1){enteredContentChangeHandler(enteredName, 'name');}
         if(enteredEmailIsValid && steps === 2){enteredContentChangeHandler(enteredEmail, 'email')}
         if(enteredCompanyIsValid && steps === 3){enteredContentChangeHandler(enteredCompany, 'company')}
-        if(enteredMessageTouched && steps === 4){enteredContentChangeHandler(enteredMessage, 'message')}
-
+        if((enteredMessageTouched) && steps === 4){enteredContentChangeHandler(enteredMessage, 'message')}
+       
         setSteps(steps + 1)
-        console.log(enteredContent)
     }
 
     const nameInputClasses = steps === 1 && inputNameIsInvalid ? styles.inputContainerInvalid : styles.inputContainer
@@ -115,7 +135,8 @@ export default function Form() {
         inputClasses={nameInputClasses}
         onBlur={nameInputBlurHandler}
         onChange={nameInputChangeHandler}
-        arrowClasses={styles.arrow}
+        onKeyDown={handleKeydown}
+        arrowClasses={inputNameIsInvalid ? "" : styles.arrow}
         arrowIcon={inputNameIsInvalid ? errorIcon : arrowIcon}
         onArrowClick={handleChangeSteps}
         validInput={inputNameIsInvalid}
@@ -126,10 +147,12 @@ export default function Form() {
         inputClasses={emailInputClasses}
         onBlur={emailInputBlurHandler}
         onChange={emailInputChangeHandler}
-        arrowClasses={styles.arrow}
+        onKeyDown={handleKeydown}
+        arrowClasses={inputEmailIsInvalid ? "" : styles.arrow}
         arrowIcon={inputEmailIsInvalid ? errorIcon : arrowIcon}
         onArrowClick={handleChangeSteps}
         validInput={inputEmailIsInvalid}
+        ref={emailInputRef}
         />}
 
          {steps === 3 && 
@@ -137,7 +160,8 @@ export default function Form() {
         inputClasses={companyNameClasses}
         onBlur={companyInputBlurHandler}
         onChange={companyInputChangeHandler}
-        arrowClasses={styles.arrow}
+        onKeyDown={handleKeydown}
+        arrowClasses={inputEmailIsInvalid ? "" : styles.arrow}
         arrowIcon={inputCompanyIsInvalid ? errorIcon : arrowIcon}
         onArrowClick={handleChangeSteps}
         validInput={inputCompanyIsInvalid}
@@ -148,12 +172,17 @@ export default function Form() {
        inputClasses={messageNameClasses}
        onBlur={messageInputBlurHandler}
        onChange={messageInputChangeHandler}
-       arrowClasses={styles.arrow}
+       onKeyDown={handleKeydown}
+       arrowClasses={inputMessageIsInvalid ? "" : styles.arrow}
        arrowIcon={inputMessageIsInvalid ? errorIcon : arrowIcon}
        onArrowClick={handleChangeSteps}
        validInput={inputMessageIsInvalid}
        />}
-                {steps === 5 && <p>Merci !</p>}
+        {steps === 5 && 
+        <div className={styles.success}>
+              <p className={styles.successText}>Votre message a bien été envoyé !</p>
+        </div>
+      }
     </>
   )
 }

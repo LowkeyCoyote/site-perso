@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import styles from '../Inputs.module.css'
 
-export default function MessageInput(props) {
+import ProgressBar from '../../ProgressBar/ProgressBar'
+
+const MessageInput = React.forwardRef((props, ref) => {
+
+const inputRef = useRef();
+
+useEffect(() => {
+  if (inputRef.current) {
+    inputRef.current.focus();
+  }
+}, []);
+
   return (
     <>
     <div className={props.inputClasses}>
@@ -10,13 +21,23 @@ export default function MessageInput(props) {
     maxLength={400}
     onBlur={props.onBlur}
     onChange={props.onChange}
+    onKeyDown={props.onKeyDown}
     placeholder='Votre message'
+    ref={inputRef}
     />
     <div className={props.arrowClasses}>
         <img src={props.arrowIcon} alt="" onClick={props.onArrowClick} />
     </div>
 </div>
-{props.validInput ? <p className={styles.invalidText}>Votre message foit faire au moins 5 caractères</p> : 
-        <p className={styles.validText}>Votre message foit faire au moins 5 caractères</p>}</>
+{props.validInput ? <p className={styles.invalidTextarea}>Votre message foit faire au moins 5 caractères</p> : 
+        <p className={styles.validText}>Votre message foit faire au moins 5 caractères</p>}
+             <ProgressBar
+          label={"75%"}
+          progress={"80%"}
+       />
+        </>
+        
   )
-}
+})
+
+export default MessageInput;

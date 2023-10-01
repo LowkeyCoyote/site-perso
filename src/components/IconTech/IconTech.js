@@ -11,7 +11,7 @@ export default function IconTech(props) {
     const checkVisibility = () => {
       if (iconRef.current) {
         const rect = iconRef.current.getBoundingClientRect();
-        if (rect.top >= 0 && rect.bottom <= window.innerHeight - 200) {
+        if (rect.top >= 100 && rect.bottom <= window.innerHeight - 100) {
           setIsVisible(true);
         } else {
           setIsVisible(false);

@@ -5,6 +5,7 @@ import FirstSection from "../components/FirstSection/FirstSection";
 import SecondSection from "../components/SecondSection/SecondSection";
 import Contact from "../components/Contact/Contact";
 import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 export default function Home(){
 
@@ -29,6 +30,8 @@ export default function Home(){
             />
 
             <Contact />
+
+            <Footer />
         </>
     )
 }

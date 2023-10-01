@@ -44,10 +44,6 @@
     padding: 2rem;
 }
 
-@media screen and (max-width: 769px){
-    .secondSectionContainer h2{
-        font-size: 29px;
-    }
-}
+
 
 

@@ -5,6 +5,7 @@ import nodeIcon from '../../assets/icons/icons8-nodejs-50.png'
 import wordpressIcon from "../../assets/icons/icons8-wordpress-50.png"
 import githubIcon from "../../assets/icons/icons8-github-50.png"
 import IconTech from '../IconTech/IconTech';
+import bootstrapIcon from '../../assets/icons/icons8-bootstrap-48.png'
 
 
 
@@ -26,19 +27,20 @@ export default function TechCard() {
            />
            <IconTech
            techImg={nodeIcon}
-           techText="NodeJS / Librarie Javascript"
+           techText="NodeJS"
+           />
+          <IconTech
+           techImg={githubIcon}
+           techText="Git / Github"
            />
            <IconTech
            techImg={wordpressIcon}
            techText="Wordpress / CMS"
            />
+         
            <IconTech
-           techImg={githubIcon}
-           techText="Github"
-           />
-           <IconTech
-           techImg={githubIcon}
-           techText="Github"
+           techImg={bootstrapIcon}
+           techText="Bootstrap"
            />
 
         </div>

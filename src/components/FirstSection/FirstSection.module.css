@@ -23,7 +23,6 @@
     }
 }
 
-
 @media screen and (max-width: 1025px){
 
     .firstSectionContainer{
@@ -43,7 +42,6 @@
         line-height: 1.8rem;
     }
     .firstSectionContainer h2{
-        font-size: 28px;
         margin-bottom: 1rem;
         margin-top: 0.5rem;
     }

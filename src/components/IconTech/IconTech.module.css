@@ -16,7 +16,10 @@
     transition: all 0.3s;
     font-size: 0;
     cursor: pointer;
+}
 
+.iconContainer > img{
+    padding: 1px;
 }
 
 .visible{

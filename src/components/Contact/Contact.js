@@ -1,27 +1,34 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { Element } from 'react-scroll';
 import styles from './Contact.module.css'
 
 import Form from '../Form/Form';
 
-import PersoImg from '../../assets/images/Perso.jpeg';
+import ContactImg from '../../assets/images/img-contact.jpeg'
 import CompassIcon from '../../assets/icons/icons8-boussole-50.png'
 import MailIcon from '../../assets/icons/icons8-courrier-50.png'
 import githubIcon from '../../assets/icons/icons8-github-32.png'
 import linkedinIcon from '../../assets/icons/icons8-linkedin-50.png'
 
-
-
-
 export default function Contact() {
+
+    const [fadeInElementVisible, setFadeInElementVisible] = useState(false);
+    useEffect(() => {
+      setFadeInElementVisible(true)
+    },[])
+
+
   return (
     <div className={styles.ContactContainer} >
+        <Element name="fadeInElement" className={`${styles.fadeInElementTop} ${fadeInElementVisible ? `${styles.active} ${styles.contactTitle}` : `${styles.contactTitle}`}`}>
         <h2>Contactez moi !</h2>
+        </Element>
     
         <div className={styles.contactFlex}>
-            <div className={styles.contactImg}>
-                <img src={PersoImg} alt="" />
-            </div>
-            <div className={styles.contactColumn}>
+            <Element name="fadeInElement" className={`${styles.fadeInElementLeft} ${fadeInElementVisible ? `${styles.active} ${styles.contactImg}` : styles.contactImg}`}>
+                <img src={ContactImg} alt="" />
+            </Element>
+            <Element name="fadeInElement" className={`${styles.fadeInElementRight} ${fadeInElementVisible ? `${styles.active} ${styles.contactColumn}` : styles.contactColumn}`}>
                 <h3>Joska Gyuricza</h3>
                 <div className={styles.localisation}>
                     <img src={CompassIcon} alt="localisation" />
@@ -46,10 +53,8 @@ export default function Contact() {
                     <Form />
                 </div>
 
-            </div>
+            </Element>
         </div>
-      
-
     </div>
   )
 }

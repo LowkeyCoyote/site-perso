@@ -1,9 +1,17 @@
-.invalidText{
+.invalidText, .invalidTextarea{
     color: red;
+    opacity: 0.9;
     text-align: left;
-    margin-left: 0.8rem;
-    font-size: 14px;
+    font-size: 13px;
     transition: all 0.3s ease-in-out;
+}
+
+.invalidText{
+    margin: 0.3rem 0 0.3rem 5.4rem;
+}
+
+.invalidTextarea{
+    margin: 0.3rem 0 0.3rem 5.5rem;
 }
 
 .validText{
@@ -13,5 +21,19 @@
     margin-left: 0.8rem;
     font-size: 14px;
     color: red;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
+
+
+@media screen and (max-width:769px){
+    .invalidText{
+        margin: 0.3rem 0 0.3rem 2.6rem;
+    }
+    
+    .invalidTextarea{
+        margin: 0.5rem 0 0.5rem 2.6rem;
+    }
+    
+}
+
+

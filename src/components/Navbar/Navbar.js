@@ -23,9 +23,6 @@ export default function Navbar() {
             end>
                 Contact
             </NavLink>
-
-
-
         </nav>
       </header>
     )
