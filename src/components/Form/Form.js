@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styles from './Form.module.css';
-
+import React, { useEffect, useRef } from 'react';
 import axios from 'axios';
+
+import { useState } from 'react';
+import styles from './Form.module.css';
 
 import NameInput from '../Inputs/NameInput/NameInput';
 import EmailInput from '../Inputs/EmailInput/EmailInput';
@@ -82,6 +83,8 @@ export default function Form() {
 
     const messageInputChangeHandler = (event) => {
         setEnteredMessage(event.target.value);
+        console.log(enteredMessage);
+        console.log(enteredMessageIsValid);
     };
 
     const messageInputBlurHandler = () => {
@@ -124,7 +127,7 @@ export default function Form() {
         if (enteredCompanyIsValid && steps === 3) {
             enteredContentChangeHandler(enteredCompany, 'company');
         }
-        if (enteredMessageTouched && steps === 4) {
+        if (enteredMessageIsValid && steps === 4) {
             enteredContentChangeHandler(enteredMessage, 'message');
         }
 
