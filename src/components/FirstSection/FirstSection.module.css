@@ -30,7 +30,6 @@
     }
 }
 
-
 @media screen and (max-width: 769px){
     .firstSectionContainer{
         width: 340px;
@@ -53,9 +52,9 @@
     transform: translateY(60px);
   }
   
-  .fadeInElement.active {
+.fadeInElement.active {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.4s;
-  }
+}
 

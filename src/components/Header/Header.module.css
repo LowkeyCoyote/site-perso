@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(../../assets/images/bg-home.png) no-repeat ;
+    background: url(../../assets/images/bg-diamond-left.png) no-repeat ;
     background-size: contain;
     height: 65vh;
 }

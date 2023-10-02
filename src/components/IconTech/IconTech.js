@@ -1,39 +1,42 @@
-import React, { useEffect, useRef, useState } from 'react'
-import styles from './IconTech.module.css'
+import React, { useEffect, useRef, useState } from 'react';
+import styles from './IconTech.module.css';
 
 export default function IconTech(props) {
+    const [isVisible, setIsVisible] = useState(false);
+    const iconRef = useRef(null);
 
+    useEffect(() => {
+        const checkVisibility = () => {
+            if (iconRef.current) {
+                const rect = iconRef.current.getBoundingClientRect();
+                if (
+                    rect.top >= 100 &&
+                    rect.bottom <= window.innerHeight - 100
+                ) {
+                    setIsVisible(true);
+                } else {
+                    setIsVisible(false);
+                }
+            }
+        };
 
-  const [isVisible, setIsVisible] = useState(false);
-  const iconRef = useRef(null)
+        window.addEventListener('scroll', checkVisibility);
+        checkVisibility();
 
-  useEffect(() => {
-    const checkVisibility = () => {
-      if (iconRef.current) {
-        const rect = iconRef.current.getBoundingClientRect();
-        if (rect.top >= 100 && rect.bottom <= window.innerHeight - 100) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
-      }
-    };
+        return () => {
+            window.removeEventListener('scroll', checkVisibility);
+        };
+    }, []);
 
-    window.addEventListener('scroll', checkVisibility)
-    checkVisibility();
-
-    return () => {
-      window.removeEventListener('scroll', checkVisibility);
-    };
-  }, []);
-
-  return (
-    <div
-    className={`${styles.iconContainer} ${isVisible ? styles.visible : ''}`}
-    ref={iconRef}
-    >
-        <img src={props.techImg} alt="" />
-        <p>{props.techText}</p>
-    </div>
-  )
+    return (
+        <div
+            className={`${styles.iconContainer} ${
+                isVisible ? styles.visible : ''
+            }`}
+            ref={iconRef}
+        >
+            <img src={props.techImg} alt="" />
+            <p>{props.techText}</p>
+        </div>
+    );
 }
