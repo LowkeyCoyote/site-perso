@@ -83,8 +83,6 @@ export default function Form() {
 
     const messageInputChangeHandler = (event) => {
         setEnteredMessage(event.target.value);
-        console.log(enteredMessage);
-        console.log(enteredMessageIsValid);
     };
 
     const messageInputBlurHandler = () => {
