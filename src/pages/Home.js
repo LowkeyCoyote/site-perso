@@ -13,7 +13,7 @@ export default function Home() {
             <Navbar />
             <Header
                 headerTitle="Bonjour ! Je suis Joska"
-                headerContent="Développeur passioné prêt à donner vie à vos idées. 
+                headerContent="Développeur passionné prêt à donner vie à vos idées. 
             Je vous aiderai à concrétiser vos projets d'applications ou de sites web."
             />
 
