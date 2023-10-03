@@ -51,7 +51,7 @@ export default function Form() {
     useEffect(() => {
         if (steps === 5 && Object.keys(enteredContent).length === 4) {
             axios
-                .post('http://localhost:3001/api', enteredContent)
+                .post('https://gzefltel0a.execute-api.eu-west-3.amazonaws.com/app/form', enteredContent)
                 .then((res) => console.log(res))
                 .catch((err) => console.log(err));
         }
