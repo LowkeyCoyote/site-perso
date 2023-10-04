@@ -34,11 +34,11 @@ const MessageInput = React.forwardRef((props, ref) => {
             </div>
             {props.validInput ? (
                 <p className={styles.invalidTextarea}>
-                    Votre message foit faire au moins 5 caractères
+                    Votre message doit faire au moins 10 caractères
                 </p>
             ) : (
                 <p className={styles.validText}>
-                    Votre message foit faire au moins 5 caractères
+                    Votre message doit faire au moins 10 caractères
                 </p>
             )}
             <ProgressBar label={'75%'} progress={'80%'} />

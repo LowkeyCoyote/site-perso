@@ -14,14 +14,14 @@ export default function TechCard() {
         <div className={styles.secondSectionCard}>
             <div className={styles.techContent}>
                 <p>
-                    Ma technologie de prédiléction s'appelle React, une
+                    Ma technologie de prédilection s'appelle React, une
                     librairie JavaScript très populaire. Elle permet de
-                    construire des interfaces utilisateurs rapide et intuitives.{' '}
+                    construire des interfaces utilisateurs rapides et intuitives.{' '}
                     <br /> <br />
                     Je maitrise également NodeJS, qui permet de réaliser des
                     applications côté serveur évolutives. <br /> <br />
                     J'ai également de l'expérience sur d'autres technologies
-                    telles que, Wordpress, Github, Sass, Bootstrap ...
+                    telles que, Wordpress, Github, Bootstrap ...
                 </p>
             </div>
             <div className={styles.techIcon}>
