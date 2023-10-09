@@ -1,8 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import axios from 'axios';
-
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Form.module.css';
+import axios from 'axios';
 
 import NameInput from '../Inputs/NameInput/NameInput';
 import EmailInput from '../Inputs/EmailInput/EmailInput';
@@ -13,41 +11,38 @@ import errorIcon from '../../assets/icons/icon-cross.png';
 import arrowIcon from '../../assets/icons/icon-arrow.png';
 
 export default function Form() {
+
     const [steps, setSteps] = useState(1);
     const [enteredContent, setEnteredContent] = useState({});
 
-    const [enteredEmail, setEnteredEmail] = useState('');
-    const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
+    const [inputStates, setInputStates] = useState({
+        enteredEmail: '',
+        enteredEmailTouched: false,
+        enteredName: '',
+        enteredNameTouched: false,
+        enteredCompany: '',
+        enteredCompanyTouched: false,
+        enteredMessage: '',
+        enteredMessageTouched: false,
+      });
+     
+      const regexInput = {
+        name : /^[a-zA-ZÀ-ÿ\s'-]+$/,
+        company : /^[A-Za-z0-9. -]+$/,
+        email : /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+      }
 
-    const [enteredName, setEnteredName] = useState('');
-    const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+    const enteredNameIsValid = regexInput.name.test(inputStates.enteredName);
+    const inputNameIsInvalid = !enteredNameIsValid && inputStates.enteredNameTouched;
 
-    const [enteredCompany, setEnteredCompany] = useState('');
-    const [enteredCompanyTouched, setEnteredCompanyTouched] = useState(false);
+    const enteredCompanyIsValid = regexInput.company.test(inputStates.enteredCompany);
+    const inputCompanyIsInvalid = !enteredCompanyIsValid && inputStates.enteredCompanyTouched;
 
-    const [enteredMessage, setEnteredMessage] = useState('');
-    const [enteredMessageTouched, setEnteredMessageTouched] = useState(false);
+    const enteredEmailIsValid = regexInput.email.test(inputStates.enteredEmail);
+    const inputEmailIsInvalid = !enteredEmailIsValid && inputStates.enteredEmailTouched;
 
-    const emailInputRef = useRef();
-
-    const regexNomPrenom = /^[a-zA-ZÀ-ÿ\s'-]+$/;
-    const regexCompanyName = /^[A-Za-z-' ]+$/;
-    const regexEmail = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-    const enteredNameIsValid = regexNomPrenom.test(enteredName);
-    const inputNameIsInvalid = !enteredNameIsValid && enteredNameTouched;
-
-    const enteredCompanyIsValid = regexCompanyName.test(enteredCompany);
-    const inputCompanyIsInvalid =
-        !enteredCompanyIsValid && enteredCompanyTouched;
-
-    const enteredEmailIsValid = regexEmail.test(enteredEmail);
-    const inputEmailIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
-
-    const enteredMessageIsValid = enteredMessage.length >= 10;
-    const inputMessageIsInvalid =
-        !enteredMessageIsValid && enteredMessageTouched;
-
+    const enteredMessageIsValid = inputStates.enteredMessage.length >= 10;
+    const inputMessageIsInvalid = !enteredMessageIsValid && inputStates.enteredMessageTouched;
         
     useEffect(() => {
         if (steps === 5 && Object.keys(enteredContent).length === 4) {
@@ -59,37 +54,19 @@ export default function Form() {
     }, [enteredContent, steps]);
     
 
-    const nameInputChangeHandler = (event) => {
-        setEnteredName(event.target.value);
-    };
-
-    const nameInputBlurHandler = () => {
-        setEnteredNameTouched(true);
-    };
-
-    const companyInputChangeHandler = (event) => {
-        setEnteredCompany(event.target.value);
-    };
-
-    const companyInputBlurHandler = () => {
-        setEnteredCompanyTouched(true);
-    };
-
-    const emailInputChangeHandler = (event) => {
-        setEnteredEmail(event.target.value);
-    };
-
-    const emailInputBlurHandler = () => {
-        setEnteredEmailTouched(true);
-    };
-
-    const messageInputChangeHandler = (event) => {
-        setEnteredMessage(event.target.value);
-    };
-
-    const messageInputBlurHandler = () => {
-        setEnteredMessageTouched(true);
-    };
+    const handleInputChange = (name, value) => {
+        setInputStates((prevInputStates) => ({
+          ...prevInputStates,
+          [name]: value,
+        }));
+      };
+    
+      const handleInputBlur = (name) => {
+        setInputStates((prevInputStates) => ({
+          ...prevInputStates,
+          [`${name}Touched`]: true,
+        }));
+      };
 
     const enteredContentChangeHandler = (element, propertyName) => {
         setEnteredContent((enteredContent) => ({
@@ -107,30 +84,31 @@ export default function Form() {
 
     const handleChangeSteps = (event) => {
         event.preventDefault();
-        setEnteredNameTouched(true);
-
-        if (
-            (!enteredNameIsValid && steps === 1) ||
+        setInputStates((prevState) => ({
+            ...prevState,
+            enteredNameTouched: true, 
+          }));
+          
+        if ((!enteredNameIsValid && steps === 1) ||
             (!enteredEmailIsValid && steps === 2) ||
             (!enteredCompanyIsValid && steps === 3) ||
-            (!enteredMessageIsValid && steps === 4)
-        ) {
+            (!enteredMessageIsValid && steps === 4))
+            {
             return;
-        }
+            }
 
         if (enteredNameIsValid && steps === 1) {
-            enteredContentChangeHandler(enteredName, 'name');
+            enteredContentChangeHandler(inputStates.enteredName, 'name');
         }
         if (enteredEmailIsValid && steps === 2) {
-            enteredContentChangeHandler(enteredEmail, 'email');
+            enteredContentChangeHandler(inputStates.enteredEmail, 'email');
         }
         if (enteredCompanyIsValid && steps === 3) {
-            enteredContentChangeHandler(enteredCompany, 'company');
+            enteredContentChangeHandler(inputStates.enteredCompany, 'company');
         }
         if (enteredMessageIsValid && steps === 4) {
-            enteredContentChangeHandler(enteredMessage, 'message');
+            enteredContentChangeHandler(inputStates.enteredMessage, 'message');
         }
-
         setSteps(steps + 1);
     };
 
@@ -156,8 +134,8 @@ export default function Form() {
             {steps === 1 && (
                 <NameInput
                     inputClasses={nameInputClasses}
-                    onBlur={nameInputBlurHandler}
-                    onChange={nameInputChangeHandler}
+                    onBlur={() => handleInputBlur('enteredName')}
+                    onChange={(event) => handleInputChange('enteredName', event.target.value)}
                     onKeyDown={handleKeydown}
                     arrowClasses={inputNameIsInvalid ? '' : styles.arrow}
                     arrowIcon={inputNameIsInvalid ? errorIcon : arrowIcon}
@@ -169,22 +147,21 @@ export default function Form() {
             {steps === 2 && (
                 <EmailInput
                     inputClasses={emailInputClasses}
-                    onBlur={emailInputBlurHandler}
-                    onChange={emailInputChangeHandler}
+                    onBlur={() => handleInputBlur('enteredEmail')}
+                    onChange={(event) => handleInputChange('enteredEmail', event.target.value)}
                     onKeyDown={handleKeydown}
                     arrowClasses={inputEmailIsInvalid ? '' : styles.arrow}
                     arrowIcon={inputEmailIsInvalid ? errorIcon : arrowIcon}
                     onArrowClick={handleChangeSteps}
                     validInput={inputEmailIsInvalid}
-                    ref={emailInputRef}
                 />
             )}
 
             {steps === 3 && (
                 <CompanyInput
                     inputClasses={companyNameClasses}
-                    onBlur={companyInputBlurHandler}
-                    onChange={companyInputChangeHandler}
+                    onBlur={() => handleInputBlur('enteredCompany')}
+                    onChange={(event) => handleInputChange('enteredCompany', event.target.value)}
                     onKeyDown={handleKeydown}
                     arrowClasses={inputEmailIsInvalid ? '' : styles.arrow}
                     arrowIcon={inputCompanyIsInvalid ? errorIcon : arrowIcon}
@@ -196,8 +173,8 @@ export default function Form() {
             {steps === 4 && (
                 <MessageInput
                     inputClasses={messageNameClasses}
-                    onBlur={messageInputBlurHandler}
-                    onChange={messageInputChangeHandler}
+                    onBlur={() => handleInputBlur('enteredMessage')}
+                    onChange={(event) => handleInputChange('enteredMessage', event.target.value)}
                     arrowClasses={inputMessageIsInvalid ? '' : styles.arrow}
                     arrowIcon={inputMessageIsInvalid ? errorIcon : arrowIcon}
                     onArrowClick={handleChangeSteps}
