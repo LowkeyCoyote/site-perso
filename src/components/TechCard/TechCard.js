@@ -10,6 +10,15 @@ import githubIcon from '../../assets/icons/icon-github-black.png';
 import bootstrapIcon from '../../assets/icons/icon-bootstrap.png';
 
 export default function TechCard() {
+
+    const iconTechData = [
+        {img: reactIcon, text: 'ReactJS / Librairie Javascript'},
+        {img: nodeIcon, text: 'NodeJS'},
+        {img: githubIcon, text: 'Git / Github'},
+        {img: wordpressIcon, text: 'Wordpress / CMS'},
+        {img: bootstrapIcon, text: 'Bootstrap'}
+    ]
+
     return (
         <div className={styles.secondSectionCard}>
             <div className={styles.techContent}>
@@ -25,14 +34,9 @@ export default function TechCard() {
                 </p>
             </div>
             <div className={styles.techIcon}>
-                <IconTech
-                    techImg={reactIcon}
-                    techText="ReactJS / Librairie Javascript"
-                />
-                <IconTech techImg={nodeIcon} techText="NodeJS" />
-                <IconTech techImg={githubIcon} techText="Git / Github" />
-                <IconTech techImg={wordpressIcon} techText="Wordpress / CMS" />
-                <IconTech techImg={bootstrapIcon} techText="Bootstrap" />
+                {iconTechData.map((tech, index) => (
+                    <IconTech key={index} techImg={tech.img} techText={tech.text} />
+                ))}
             </div>
         </div>
     );
