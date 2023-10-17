@@ -30,6 +30,15 @@ export default function Navbar() {
                 >
                     Contact
                 </NavLink>
+                <NavLink
+                    to="/portfolio"
+                    className={({ isActive }) =>
+                        isActive ? styles.active : undefined
+                    }
+                    end
+                >
+                    Portfolio
+                </NavLink>
             </nav>
         </header>
     );

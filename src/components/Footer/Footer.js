@@ -49,6 +49,12 @@ export default function Footer() {
                     </a>
                 </div>
             </div>
+            <div className={styles.footerRow}>
+            <Link
+                to="/portfolio"
+                onClick={() => window.scrollTo(0, 0)}
+                >Portfolio</Link>
+            </div>
         </footer>
     );
 }

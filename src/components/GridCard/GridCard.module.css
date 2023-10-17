@@ -1,0 +1,88 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 475px;
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px #b6cad8;
+    background-color: #f9f9f9;
+    padding: 1.5rem 2rem;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.projectImgContainer {
+    height: 173px;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px #b6cad8;
+}
+
+.projectTags {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.projectTags > span {
+    background-color: rgba(78, 114, 209, 0.888);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.projectLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.projectLinks img {
+    height: 40px;
+    width: 40px;
+    margin-bottom: 5px;
+}
+
+.projectLinks a {
+    text-decoration: none;
+    color: rgba(78, 104, 209, 0.88);
+    font-weight: 600;
+}
+
+.projectLive,
+.projectGit {
+    transition: all 0.1s ease-in-out;
+}
+
+.projectLive:hover,
+.projectGit:hover {
+    transform: scale(1.06);
+}
+
+.card > h3 {
+    margin: 20px auto 10px auto;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 500px) {
+    .card {
+        width: 320px;
+        height: 460px;
+    }
+
+    .projectImgContainer {
+        height: 155px;
+    }
+}
