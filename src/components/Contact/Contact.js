@@ -27,7 +27,7 @@ export default function Contact() {
                         : `${styles.contactTitle}`
                 }`}
             >
-                <h2>Contactez moi !</h2>
+                <h2>Contactez-moi !</h2>
             </Element>
 
             <div className={styles.contactFlex}>
