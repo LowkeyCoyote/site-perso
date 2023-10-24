@@ -2,9 +2,9 @@
 
 ## Context
 
-Development of my personal website.
-The design is minimalist.
-The main technologies are react.js, node.js and AWS.
+Development of my personal website !  
+The design is minimalist.  
+The main technologies are react.js, node.js and AWS.  
 
 You can see the result at the following [LINK](https://www.joska-gyuricza.fr/)
 
