@@ -17,6 +17,10 @@ You can see the result at the following [LINK](https://www.joska-gyuricza.fr/)
 ![HTML](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white) <br>
 ![CSS](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
 
+## Design
+
+![Portfolio desdign](https://i.imgur.com/DBdvnPG.png)
+
 
 
 
